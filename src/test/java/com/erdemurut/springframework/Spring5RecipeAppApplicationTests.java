@@ -1,4 +1,4 @@
-package com.erdemurut.spring5recipeapp;
+package com.erdemurut.springframework;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
