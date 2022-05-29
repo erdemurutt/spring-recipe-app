@@ -2,6 +2,8 @@ package com.erdemurut.springframework.domain;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,6 +30,11 @@ public class Recipe {
 	//Lob means larger objects can be inserted database
 	@Lob
 	private Byte[] image;
+
+	//EnumType.ORDINAL seçilirse enum classındaki sıraya göre db'ye yazılır (1,2,3)
+	//EnumType.String seçilirse string değeri db'ye yazılır
+	@Enumerated(value = EnumType.STRING)
+	private Difficulty difficulty;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Notes notes;
@@ -57,5 +64,13 @@ public class Recipe {
 
 	public void setIngredients(Set<Ingredient> ingredients) {
 		this.ingredients = ingredients;
+	}
+
+	public Difficulty getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(Difficulty difficulty) {
+		this.difficulty = difficulty;
 	}
 }
