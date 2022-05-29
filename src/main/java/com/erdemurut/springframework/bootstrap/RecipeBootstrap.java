@@ -74,7 +74,6 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 		}
 
 		Category turkishCategory = turkishCategoryOptional.get();
-		Category mexicanCategory = mexicanCategoryOptional.get();
 
 		Recipe guaRecipe = new Recipe();
 		guaRecipe.setDescription("Perfect Guacamole");
@@ -86,13 +85,12 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
 		Notes guacNotes = new Notes();
 		guacNotes.setRecipeNotes("Be careful handling chilis! If using, it's best to wear food-safe gloves. If no gloves are available, wash your hands thoroughly after handling, and do not touch your eyes or the area near your eyes for several hours afterwards.");
-		guacNotes.setRecipe(guaRecipe);
 		guaRecipe.setNotes(guacNotes);
 
-		guaRecipe.getIngredients().add(new Ingredient("ripe avocados", new BigDecimal(2), eachUom, guaRecipe));
-		guaRecipe.getIngredients().add(new Ingredient("kosher salt", new BigDecimal(".5"), tableSpoonUom, guaRecipe));
-		guaRecipe.getIngredients().add(new Ingredient("Sugar", new BigDecimal(1), teaSpoonUom, guaRecipe));
-		guaRecipe.getIngredients().add(new Ingredient("Garlic", new BigDecimal(1), dashUom, guaRecipe));
+		guaRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom));
+		guaRecipe.addIngredient(new Ingredient("kosher salt", new BigDecimal(".5"), tableSpoonUom));
+		guaRecipe.addIngredient(new Ingredient("Sugar", new BigDecimal(1), teaSpoonUom));
+		guaRecipe.addIngredient(new Ingredient("Garlic", new BigDecimal(1), dashUom));
 
 		guaRecipe.getCategories().add(turkishCategory);
 
