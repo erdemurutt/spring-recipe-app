@@ -79,26 +79,29 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
 		Category turkishCategory = turkishCategoryOptional.get();
 
-		Recipe guaRecipe = new Recipe();
-		guaRecipe.setDescription("Perfect Guacamole");
-		guaRecipe.setPrepTime(10);
-		guaRecipe.setCookTime(0);
-		guaRecipe.setDifficulty(Difficulty.EASY);
-		guaRecipe.setDirections("Cut the avocado:\n" +
+		Recipe guacRecipe = new Recipe();
+		guacRecipe.setDescription("Perfect Guacamole");
+		guacRecipe.setPrepTime(10);
+		guacRecipe.setCookTime(0);
+		guacRecipe.setDifficulty(Difficulty.EASY);
+		guacRecipe.setDirections("Cut the avocado:\n" +
 				"Cut the avocados in half. Remove the pit. Score the inside of the avocado with a blunt knife and scoop out the flesh with a spoon. (See How to Cut and Peel an Avocado.) Place in a bowl.");
 
 		Notes guacNotes = new Notes();
 		guacNotes.setRecipeNotes("Be careful handling chilis! If using, it's best to wear food-safe gloves. If no gloves are available, wash your hands thoroughly after handling, and do not touch your eyes or the area near your eyes for several hours afterwards.");
-		guaRecipe.setNotes(guacNotes);
+		guacRecipe.setNotes(guacNotes);
 
-		guaRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom));
-		guaRecipe.addIngredient(new Ingredient("kosher salt", new BigDecimal(".5"), tableSpoonUom));
-		guaRecipe.addIngredient(new Ingredient("Sugar", new BigDecimal(1), teaSpoonUom));
-		guaRecipe.addIngredient(new Ingredient("Garlic", new BigDecimal(1), dashUom));
+		guacRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom));
+		guacRecipe.addIngredient(new Ingredient("kosher salt", new BigDecimal(".5"), tableSpoonUom));
+		guacRecipe.addIngredient(new Ingredient("Sugar", new BigDecimal(1), teaSpoonUom));
+		guacRecipe.addIngredient(new Ingredient("Garlic", new BigDecimal(1), dashUom));
 
-		guaRecipe.getCategories().add(turkishCategory);
+		guacRecipe.getCategories().add(turkishCategory);
+		guacRecipe.setUrl("http://www.simplyrecipes.com/recipes/perfect_guacamole");
+		guacRecipe.setServings(4);
+		guacRecipe.setSource("Simply Recipes");
 
-		recipes.add(guaRecipe);
+		recipes.add(guacRecipe);
 		return recipes;
 	}
 }
