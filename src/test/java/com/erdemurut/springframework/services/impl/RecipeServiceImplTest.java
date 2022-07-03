@@ -24,47 +24,47 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
 class RecipeServiceImplTest {
-
-	RecipeServiceImpl recipeService;
-
-	@Mock
-	RecipeRepository recipeRepository;
-
-	@BeforeEach
-	public void setUp() throws Exception {
-		MockitoAnnotations.initMocks(this);
-
-		recipeService = new RecipeServiceImpl(recipeRepository);
-	}
-
-	@Test
-	void getRecipes() {
-
-		Recipe recipe = new Recipe();
-		HashSet receipesData = new HashSet();
-		receipesData.add(recipe);
-
-		when(recipeRepository.findAll()).thenReturn(receipesData);
-
-		Set<Recipe> recipes = recipeService.getRecipes();
-
-		verify(recipeRepository, times(1)).findAll();
-		assertEquals(recipes.size(), 1);
-	}
-
-	@Test
-	void getRecipeByIdTest() throws Exception {
-
-		Recipe recipe = new Recipe();
-		recipe.setId(1L);
-		Optional<Recipe> recipeOptional = Optional.of(recipe);
-
-		when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
-
-		Recipe recipeReturned = recipeService.findById(1L);
-
-	//	assertNotNull("Null recipe returned", recipeReturned);
-		verify(recipeRepository, times(1)).findById(anyLong());
-		verify(recipeRepository, never()).findAll();
-	}
+//
+//	RecipeServiceImpl recipeService;
+//
+//	@Mock
+//	RecipeRepository recipeRepository;
+//
+//	@BeforeEach
+//	public void setUp() throws Exception {
+//		MockitoAnnotations.initMocks(this);
+//
+//		recipeService = new RecipeServiceImpl(recipeRepository);
+//	}
+//
+//	@Test
+//	void getRecipes() {
+//
+//		Recipe recipe = new Recipe();
+//		HashSet receipesData = new HashSet();
+//		receipesData.add(recipe);
+//
+//		when(recipeRepository.findAll()).thenReturn(receipesData);
+//
+//		Set<Recipe> recipes = recipeService.getRecipes();
+//
+//		verify(recipeRepository, times(1)).findAll();
+//		assertEquals(recipes.size(), 1);
+//	}
+//
+//	@Test
+//	void getRecipeByIdTest() throws Exception {
+//
+//		Recipe recipe = new Recipe();
+//		recipe.setId(1L);
+//		Optional<Recipe> recipeOptional = Optional.of(recipe);
+//
+//		when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+//
+//		Recipe recipeReturned = recipeService.findById(1L);
+//
+//		assertNotNull("Null recipe returned", recipeReturned);
+//		verify(recipeRepository, times(1)).findById(anyLong());
+//		verify(recipeRepository, never()).findAll();
+//	}
 }

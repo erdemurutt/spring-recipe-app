@@ -36,6 +36,9 @@ public class Recipe {
 	@Lob
 	private String directions;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+	private Set<Ingredient> ingredients = new HashSet<>();
+
 	@Lob
 	private Byte[] image;
 
@@ -51,15 +54,14 @@ public class Recipe {
 			inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Category> categories = new HashSet<>();
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-	private Set<Ingredient> ingredients = new HashSet<>();
-
 	public void setNotes(Notes notes) {
-		this.notes = notes;
-		notes.setRecipe(this);
+		if (notes != null) {
+			this.notes = notes;
+			notes.setRecipe(this);
+		}
 	}
 
-	public Recipe addIngredient(Ingredient ingredient) {
+	public Recipe addIngredient(Ingredient ingredient){
 		ingredient.setRecipe(this);
 		this.ingredients.add(ingredient);
 		return this;
